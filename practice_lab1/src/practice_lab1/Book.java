@@ -144,6 +144,10 @@ public class Book {
 
         Book.searchAllBooks();
 
+        Book.search_bs("1");
+        Book.search_bs("2");
+        Book.search_bs("8");
+		Book.search_bs("10");
         Book.searchBook("1");
         Book.searchBook("2");
         Book.searchBook("6");
