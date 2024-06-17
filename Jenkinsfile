@@ -10,12 +10,14 @@ pipeline {
     
     stage('Build') {
       steps {
-        // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
-        // Window 일 경우 bat
-        def classpath = "classes;C:\\Users\\jeeew\\eclipse\\plugins\\junit-platform-console-standalone-1.7.1.jar"
+        script {
+          // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
+          // Window 일 경우 bat
+          def classpath = "classes;C:\\Users\\jeeew\\eclipse\\plugins\\junit-platform-console-standalone-1.7.1.jar"
 
-        bat 'javac -encoding UTF-8 -d classes practice_lab1/src/Book.java'
-        bat "javac -encoding UTF-8 -d test-classes -classpath ${classpath} practice_lab1/src/BookPerformance.java"
+          bat 'javac -encoding UTF-8 -d classes practice_lab1/src/Book.java'
+          bat "javac -encoding UTF-8 -d test-classes -classpath ${classpath} practice_lab1/src/BookPerformance.java"
+        }
       }
     }
 
