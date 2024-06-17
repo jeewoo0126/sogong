@@ -33,20 +33,19 @@ pipeline {
       }
     }
   }
+  
+  post {
+    always {
+      //테스트 결과 파일을 저장하기 위해 아카이브
+      archievArtifacts 'test_result.txt'
+    }
+    failure {
+      echo 'Build or test Failed'
 
-
-}
-
-post {
-  always {
-    //테스트 결과 파일을 저장하기 위해 아카이브
-    archievArtifacts 'test_result.txt'
-  }
-  failure {
-    echo 'Build or test Failed'
-
-  }
-  success {
-    echo 'Build and test Succeeded'
+    }
+    success {
+      echo 'Build and test Succeeded'
+    }
   }
 }
+
