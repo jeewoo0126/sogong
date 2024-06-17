@@ -2,19 +2,20 @@ pipeline {
   agent any
   stages{
     stage('CheckOut') {
-      // 소스코드 체크아웃
-      checkout scm
-
+        steps {
+          // 소스코드 체크아웃
+          checkout scm
+        }
     }
-
   }
 
   stage('Build') {
     steps {
       // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
       // Window 일 경우 bat
-      bat 'javac -encoding UTF-8 -d classes Practice/src/**/*.java'
-
+      bat 'javac -encoding UTF-8 -d classes practice_lab1/src/Book.java'
+      def classpath = "classes;lib\\*;path\\to\\eclipse\\plugins\\junit-platform-console-standalone-1.7.1.jar"
+      bat "javac -encoding UTF-8 -d test-classes -classpath ${classpath} practice_lab1/src/BookPerformance.java"
     }
   }
 
