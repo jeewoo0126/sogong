@@ -37,7 +37,7 @@ pipeline {
   post {
     always {
       //테스트 결과 파일을 저장하기 위해 아카이브
-      archiveArtifacts 'test_result.txt'
+      archiveArtifacts artifacts: 'test_result.txt', allowEmptyArchive: true
     }
     failure {
       echo 'Build or test Failed'
