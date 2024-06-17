@@ -9,7 +9,7 @@ pipeline {
     }
   }
 
-  stage('Build') {
+  stages('Build') {
     steps {
       // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
       // Window 일 경우 bat
@@ -19,7 +19,7 @@ pipeline {
     }
   }
 
-  stage('Test') {
+  stages('Test') {
     steps{
       script {
         // JUnit 5 테스트 실행을 위한 classpath 설정
