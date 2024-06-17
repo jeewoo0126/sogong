@@ -16,7 +16,7 @@ pipeline {
           def classpath = "classes;C:\\Users\\jeeew\\eclipse\\plugins\\junit-platform-console-standalone-1.7.1.jar"
 
           bat 'javac -encoding UTF-8 -d classes practice_lab1/src/practice_lab1/Book.java'
-          bat "javac -encoding UTF-8 -d test-classes -classpath ${classpath} practice_lab1/src/practice_lab1/BookPerformance.java"
+          bat "javac -encoding UTF-8 -d test-classes -classpath ${classpath} practice_lab1/src/practice_lab1/BookPerformanceTest.java"
         }
       }
     }
