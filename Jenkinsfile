@@ -7,32 +7,31 @@ pipeline {
           checkout scm
         }
     }
-  }
-
-  stages('Build') {
-    steps {
-      // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
-      // Window 일 경우 bat
-      bat 'javac -encoding UTF-8 -d classes practice_lab1/src/Book.java'
-      def classpath = "classes;lib\\*;path\\to\\eclipse\\plugins\\junit-platform-console-standalone-1.7.1.jar"
-      bat "javac -encoding UTF-8 -d test-classes -classpath ${classpath} practice_lab1/src/BookPerformance.java"
-    }
-  }
-
-  stages('Test') {
-    steps{
-      script {
-        // JUnit 5 테스트 실행을 위한 classpath 설정
+    
+    stage('Build') {
+      steps {
+        // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
+        // Window 일 경우 bat
+        bat 'javac -encoding UTF-8 -d classes practice_lab1/src/Book.java'
         def classpath = "classes;lib\\*;path\\to\\eclipse\\plugins\\junit-platform-console-standalone-1.7.1.jar"
-        // JUnit 5 테스트 실행
-        bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
+        bat "javac -encoding UTF-8 -d test-classes -classpath ${classpath} practice_lab1/src/BookPerformance.java"
+      }
+    }
+
+    stage('Test') {
+      steps{
+        script {
+          // JUnit 5 테스트 실행을 위한 classpath 설정
+          def classpath = "classes;lib\\*;path\\to\\eclipse\\plugins\\junit-platform-console-standalone-1.7.1.jar"
+          // JUnit 5 테스트 실행
+          bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
+
+        }
 
       }
-
     }
-
-
   }
+
 
 }
 
